@@ -18,6 +18,11 @@ public class LevelGrid : SingletonMonoBehaviour<LevelGrid>
         gridSystem.CreateDebugObject(debugPrefab);
     }
 
+    private void Start()
+    {
+        Pathfinding.Instance.Setup(width, height, cellSize);
+    }
+
     public Vector2 GetWorldPosition(GridPosition gridPosition)
     {
         return gridSystem.GetWorldPosition(gridPosition);
@@ -55,5 +60,11 @@ public class LevelGrid : SingletonMonoBehaviour<LevelGrid>
     {
         RemoveUnitAtGridPosition(fromGridPosition, unit);
         AddUnitAtGridPosition(toGridPosition, unit);
+    }
+
+    public bool HasAnyUnitOnGridPosition(GridPosition gridPosition)
+    {
+        GridObject gridObject = gridSystem.GetGridObject(gridPosition);
+        return gridObject.HasAnyUnit();
     }
 }

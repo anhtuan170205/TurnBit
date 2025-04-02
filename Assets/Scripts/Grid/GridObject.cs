@@ -47,4 +47,14 @@ public class GridObject
     {
         return (HasUnit()) ? unitList[0] : null;
     }
+
+    public bool HasAnyUnit()
+    {
+        return unitList.Count > 0;
+    }
+
+    public GridPosition GetGridPosition()
+    {
+        return gridPosition;
+    }
 }
